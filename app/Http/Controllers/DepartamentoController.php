@@ -8,9 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class DepartamentoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   
     public function index()
     {
         $departamentos = DB::table('tb_departamento')
@@ -21,9 +19,7 @@ class DepartamentoController extends Controller
     return view('departamento.index',['departamentos'=>$departamentos]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+   
     public function create()
     {
         $paises = DB::table('tb_pais')
@@ -32,9 +28,7 @@ class DepartamentoController extends Controller
         return view('departamento.new',['paises'=>$paises]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+   
     public function store(Request $request)
     {
         $departamento = new Departamento();
@@ -49,17 +43,13 @@ class DepartamentoController extends Controller
         return view('departamento.index',['departamentos' => $departamentos]);
     }
 
-    /**
-     * Display the specified resource.
-     */
+ 
     public function show(string $id)
     {
-        //
+        
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(string $id)
     {
         $departamento = Departamento::find($id);
@@ -70,9 +60,7 @@ class DepartamentoController extends Controller
         return view('departamento.edit',['departamento'=>$departamento, 'paises' => $paises]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+   
     public function update(Request $request, string $id)
     {
         $departamento = Departamento::find($id);
@@ -89,9 +77,7 @@ class DepartamentoController extends Controller
         return view('departamento.index',['departamentos'=>$departamentos]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+   
     public function destroy(string $id)
     {
         $departamento = Departamento::find($id);

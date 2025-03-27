@@ -8,12 +8,10 @@ use Illuminate\Support\Facades\DB;
 
 class MunicipioController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+ 
     public function index()
     {
-        //$municipios = Municipio::all();
+        
         $municipios = DB::table('tb_municipio')
             ->join('tb_departamento', 'tb_municipio.depa_codi', '=', 'tb_departamento.depa_codi')
             ->select('tb_municipio.*', 'tb_departamento.depa_nomb')
@@ -22,9 +20,7 @@ class MunicipioController extends Controller
         return view('municipio.index',['municipios'=>$municipios]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         $departamentos = DB::table('tb_departamento')
@@ -34,9 +30,7 @@ class MunicipioController extends Controller
             return view('municipio.new',['departamentos'=>$departamentos]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+   
     public function store(Request $request)
     {
         $municipio = new Municipio();
@@ -54,17 +48,13 @@ class MunicipioController extends Controller
             return view('municipio.index',['municipios'=>$municipios]);
     }
 
-    /**
-     * Display the specified resource.
-     */
+ 
     public function show(string $id)
     {
-        //
+        
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+  
     public function edit(string $id)
     {
         $municipio = Municipio::find($id);
@@ -77,9 +67,7 @@ class MunicipioController extends Controller
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+  
     public function update(Request $request, string $id)
     {
         $municipio = Municipio::find($id);
@@ -96,9 +84,7 @@ class MunicipioController extends Controller
         return view('municipio.index',['municipios' =>$municipios]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+  
     public function destroy(string $id)
     {
         $municipio = Municipio::find($id);
