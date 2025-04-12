@@ -3,9 +3,6 @@
 use App\Http\Controllers\ComunaController;
 use App\Http\Controllers\MunicipioController;
 use App\Http\Controllers\DepartamentoController;
-use App\Models\Comuna;
-use App\Models\Municipio;
-use App\Models\Departamento;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
