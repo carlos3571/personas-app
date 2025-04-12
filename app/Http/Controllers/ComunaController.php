@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comuna;
+use App\Models\Municipio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -106,14 +107,14 @@ class ComunaController extends Controller
     public function destroy(string $id)
     {
         //
-        $comuna = Comuna::find($id);
-        $comuna->delete();
+        $municipio = Municipio::find($id);
+        $municipio->delete();
 
-        $comunas = DB::table('tb_comuna')
-        ->join('tb_municipio', 'tb_comuna.muni_codi', '=', 'tb_municipio.muni_codi')
-        ->select('tb_comuna.*', 'tb_municipio.muni_nomb')
+        $municipios = DB::table('tb_municipio')
+        ->join('tb_departamento', 'tb_municipio.depa_codi', '=', 'tb_departamento.depa_codi')
+        ->select('tb_municipio.*', 'tb_departamento.depa_nomb')
         ->get();
 
-        return view('comuna.index', ['comunas' => $comunas]);
+        return view('municipio.index', ['municipios' => $municipios]);
     }
 }
