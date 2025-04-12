@@ -8,10 +8,10 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Listado de Comunas</title>
+    <title>Listado de Departamentos</title>
   </head>
   <body>
-    <h1>Listado de Comunas</h1>
+    <h1>Listado de Departamentos</h1>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -26,32 +26,32 @@
 
     <div class="container">
 
-    <a href="{{ route('comunas.create') }}" class="btn btn-success">Adicionar</a>
+    <a href="{{ route('departamentos.create') }}" class="btn btn-success">Adicionar</a>
     
     <table class="table">
   <thead>
     <tr>
       <th scope="col">Codigo</th>
-      <th scope="col">Nombre Comuna</th>
-      <th scope="col">Nombre Municipio</th>
+      <th scope="col">Nombre Departamento</th>
+      <th scope="col">Nombre Pais</th>
       <th scope="col">Accion</th>
     </tr>
   </thead>
   <tbody>
-    @foreach ($comunas as $comuna)
+    @foreach ($departamentos as $departamento)
     <tr>
-      <th scope="row">{{ $comuna->comu_codi }}</th>
-      <td>{{ $comuna->comu_nomb }}</td>
-      <td>{{ $comuna->muni_nomb }}</td>
+      <th scope="row">{{ $departamento->depa_codi }}</th>
+      <td>{{ $departamento->depa_nomb }}</td>
+      <td>{{ $departamento->pais_nomb }}</td>
       <td>
       
-      <a href="{{ route('comunas.edit', ['comuna'=>$comuna->comu_codi]) }}" class="btn btn-info">Editar</a>
+      <a href="{{ route('departamentos.edit', ['departamento'=>$departamento->depa_codi]) }}" class="btn btn-info">Editar</a>
 
-      <form action=" {{ route('comunas.destroy', ['comuna' => $comuna->comu_codi]) }}"
+      <form action=" {{ route('departamentos.destroy', ['departamento' => $departamento->depa_codi]) }}"
       method='POST' style="display: inline-block">
       @method('delete')
       @csrf
-      <input class="btn btn-danger" type="submit" value="Delete">
+      <input class="btn btn-danger" type="submit" value="Eliminar">
       </form>
 
       </td>

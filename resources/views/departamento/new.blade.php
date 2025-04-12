@@ -8,34 +8,34 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Adicionar Comuna</title>
+    <title>Adicionar Departamento</title>
   </head>
   <body>
     <div class="container">
-    <h1>Adicionar Comuna</h1>
+    <h1>Adicionar Departamento</h1>
     </div>
 
-    <form method="POST" action="{{ route('comunas.store') }}">
+    <form method="POST" action="{{ route('departamentos.store') }}">
         @csrf
   <div class="mb-3">
     <label for="id" class="form-label">Codigo</label>
     <input type="text" class="form-control" id="id" aria-describedby="idHelp" name="id" disabled="disabled">
-    <div id="idHelp" class="form-text">Codigo de comuna</div>
+    <div id="idHelp" class="form-text">Codigo de departamento</div>
   </div>
 
 
   <div class="mb-3">
-    <label for="comuna" class="form-label">Comuna</label>
-    <input type="text" required class="form-control" id="comuna" aria-describedby="nameHelp" name="comuna" placeholder="Nombre de comuna.">
+    <label for="departamento" class="form-label">Departamento</label>
+    <input type="text" required class="form-control" id="departamento" aria-describedby="ndepartamentoHelp" name="departamento" placeholder="Nombre de departamento.">
   </div>
 
-  <label for="municipio">Municipio</label>
-  <select class="form-select" id="municipio" name="municipio" required>
+  <label for="pais">Pais</label>
+  <select class="form-select" id="pais" name="pais" required>
 
   <option selected disabled value="">Elegir uno ...</option>
 
-  @foreach ($municipios as $municipio)
-  <option value="{{ $municipio->muni_codi }}">{{ $municipio->muni_nomb }}</option>
+  @foreach ($paises as $pais)
+  <option value="{{ $pais->pais_codi }}">{{ $pais->pais_nomb }}</option>
   @endforeach
 
   </select>
@@ -43,7 +43,7 @@
   <div class="mt-3">
 
   <button type="submit" class="btn btn-primary">Guardar</button>
-  <a href="{{ route('comunas.index') }}" class="btn btn-warning">Cancelar</a>
+  <a href="{{ route('departamentos.index') }}" class="btn btn-warning">Cancelar</a>
 
   </div>
 </div>

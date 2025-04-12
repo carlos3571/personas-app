@@ -10,41 +10,41 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Editar Comuna</title>
+    <title>Editar Departamento</title>
 </head>
 
 <body>
     <div class="container">
-        <h1>Editar Comuna</h1>
+        <h1>Editar Departamento</h1>
     </div>
 
-    <form method="POST" action="{{ route('comunas.update', ['comuna' => $comuna->comu_codi]) }}">
+    <form method="POST" action="{{ route('departamentos.update', ['departamento' => $departamento->depa_codi]) }}">
         @method('put')
         @csrf
         <div class="mb-3">
-            <label for="comunaId" class="form-label">Id</label>
-            <input type="text" class="form-control" id="comunaId" aria-describedby="comunaIdHelp" name="comunaId"
-                disabled="disabled" value=" {{ $comuna->comu_codi }}">
-            <div id="comunaIdHelp" class="form-text">Id de comuna</div>
+            <label for="departamentoId" class="form-label">Id</label>
+            <input type="text" class="form-control" id="departamentoId" aria-describedby="departamentoIdHelp" name="departamentoId"
+                disabled="disabled" value=" {{ $departamento->depa_codi }}">
+            <div id="departamentoIdHelp" class="form-text">Id de departamento</div>
         </div>
 
 
         <div class="mb-3">
-            <label for="comuna" class="form-label">Comuna</label>
-            <input type="text" required class="form-control" id="comuna" placeholder="Nombre de comuna." 
-                name="comuna" value="{{ $comuna->comu_nomb }}">
+            <label for="departamento" class="form-label">Departamento</label>
+            <input type="text" required class="form-control" id="departamento" placeholder="Nombre de departamento." 
+                name="departamento" value="{{ $departamento->depa_nomb }}">
         </div>
 
-        <label for="municipio">Municipio</label>
-        <select class="form-select" id="municipio" name="municipio" required>
+        <label for="pais">Pais</label>
+        <select class="form-select" id="pais" name="pais" required>
 
             <option selected disabled value="">Elegir uno ...</option>
 
-            @foreach ($municipios as $municipio)
-                @if ($municipio->muni_codi == $comuna->muni_codi)
-                    <option select value="{{ $municipio->muni_codi }}">{{ $municipio->muni_nomb }}</option>
+            @foreach ($paises as $pais)
+                @if ($pais->pais_codi == $departamento->depa_codi)
+                    <option select value="{{ $pais->pais_codi }}">{{ $pais->pais_nomb }}</option>
                 @else
-                    <option value="{{ $municipio->muni_codi }}">{{ $municipio->muni_nomb }}</option>
+                    <option value="{{ $pais->pais_codi }}">{{ $pais->pais_nomb }}</option>
                 @endif
             @endforeach
 
@@ -53,7 +53,7 @@
         <div class="mt-3">
 
             <button type="submit" class="btn btn-primary">Guardar</button>
-            <a href="{{ route('comunas.index') }}" class="btn btn-warning">Cancelar</a>
+            <a href="{{ route('departamentos.index') }}" class="btn btn-warning">Cancelar</a>
 
         </div>
         </div>
