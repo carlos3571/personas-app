@@ -7,3 +7,7 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 Route::get('/comunas', [ComunaController::class, 'index'])->name('comunas');
+
+use App\Http\Controllers\ComunaController;
+
+Route::apiResource('comunas', ComunaController::class);

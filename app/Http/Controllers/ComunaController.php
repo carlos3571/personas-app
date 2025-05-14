@@ -45,8 +45,8 @@ class ComunaController extends Controller
         $comuna = new Comuna();
         // $comuna->comu_codi = $request->id;
         // El codigo de comuna es autoincremental
-        $comuna->comu_nomb = $request->comuna;
-        $comuna->muni_codi = $request->municipio;
+        $comuna->comu_nomb = $request->comu_nomb;
+        $comuna->muni_codi = $request->muni_codi;
         $comuna->save();
 
         $comunas = DB::table('tb_comuna')
@@ -61,7 +61,12 @@ class ComunaController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $comuna = Comuna ::find($id);
+        $municipios = DB::table('tb_municipio')
+        ->orderBY('muni_nomb')
+        ->get();
+        return json_encode(['comuna' => $comunas, 'municipio' => $municipios]);
+
     }
 
     /**
@@ -78,7 +83,7 @@ class ComunaController extends Controller
         ->orderBy('muni_nomb')
         ->get();
 
-        return view('comuna.edit', ['comuna' => $comuna, 'municipios' => $municipios]);
+        return view('comuna.edit', ['comuna' => $comunas, 'municipios' => $municipios]);
     }
 
     /**
@@ -89,8 +94,8 @@ class ComunaController extends Controller
         //
         $comuna = Comuna::find($id);
 
-        $comuna->comu_nomb = $request->comuna;
-        $comuna->muni_codi = $request->municipio;
+        $comuna->comu_nomb = $request->comu_nomb;
+        $comuna->muni_codi = $request->muni_codi;
         $comuna->save();
 
         $comunas = DB::table('tb_comuna')
@@ -98,7 +103,7 @@ class ComunaController extends Controller
         ->select('tb_comuna.*', 'tb_municipio.muni_nomb')
         ->get();
 
-        return view('comuna.index', ['comunas' => $comunas]);
+       return json_encode(['comuna' => $comunas,]);
     }
 
     /**
@@ -115,6 +120,6 @@ class ComunaController extends Controller
         ->select('tb_comuna.*', 'tb_municipio.muni_nomb')
         ->get();
 
-        return view('comuna.index', ['comunas' => $comunas]);
+        return json_encode(['comuna' => $comunas, 'success'=> true]);
     }
 }
