@@ -116,3 +116,4 @@ class MunicipioController extends Controller
         return view('municipio.index', ['municipios' => $municipios]);
     }
 }
+//este es el trabajo de comuna 
