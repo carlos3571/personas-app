@@ -5,9 +5,8 @@ use App\Http\Controllers\MunicipioController;
 use App\Http\Controllers\DepartamentoController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Ruta raíz redirige a la vista de municipios
+Route::get('/', [MunicipioController::class, 'index']);
 
 Route::get('/comunas', [ComunaController::class, 'index'])->name('comunas.index');
 Route::post('/comunas', [ComunaController::class, 'store'])->name('comunas.store');
