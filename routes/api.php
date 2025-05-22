@@ -23,4 +23,4 @@ Route::delete('/comunas/{comuna}', [ComunaController::class, 'destroy'])->name('
 Route::get('/comunas/{comuna}', [ComunaController::class, 'show'])->name('comunas.show');
 Route::put('/comunas/{comuna}', [ComunaController::class, 'update'])->name('comunas.update');
 
-Route::get('/municipios', [MunicipioController::class, 'index'])->name('municipios');
+
